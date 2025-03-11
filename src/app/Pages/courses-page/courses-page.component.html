@@ -1,0 +1,104 @@
+<div class="sidebar">
+    <h2>Menú</h2>
+    <ul>
+        <a href="http://">
+        <li>Inicio</li>
+    </a>
+    <a href="http://">
+        <li>Cursos</li>
+    </a>
+    <a href="http://">
+        <li>Sobre Nosotros</li>
+    </a>
+    <a href="http://">
+        <li>Contacto</li>
+    </a>
+    </ul>
+</div>
+<div class="search-filter-container">
+    <input
+      type="text"
+      placeholder="Buscar por precio..."
+      [(ngModel)]="searchValue"
+      (input)="onSearch()"
+    />
+  
+    <button (click)="toggleFilter()">Filtrar</button>
+  
+    <div *ngIf="showFilter">
+      <label>
+        <input type="radio" name="filter" (change)="sortCourses('priceAsc')" />
+        Precio: Menor a Mayor
+      </label>
+      <label>
+        <input type="radio" name="filter" (change)="sortCourses('priceDesc')" />
+        Precio: Mayor a Menor
+      </label>
+      <label>
+        <input type="radio" name="filter" (change)="sortCourses('alphabetic')" />
+        Orden Alfabético
+      </label>
+    </div>
+  
+  <ul>
+    <li *ngFor="let course of filteredCourses">
+      {{ course.name }} - ${{ course.price }}
+    </li>
+  </ul>  
+    <div class="grid-container">
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+            <a href="http://">
+            <button>Detalles</button>
+        </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+            <a href="http://">
+            <button>Detalles</button>
+        </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+            <a href="http://">
+            <button>Detalles</button>
+        </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+            <a href="http://">
+            <button>Detalles</button>
+        </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+            <a href="http://">
+            <button>Detalles</button>
+        </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+            <a href="http://">
+            <button>Detalles</button>
+        </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+           <a href="http://">
+            <button>Detalles</button>
+        </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+         <a href="http://">
+            <button>Detalles</button>
+         </a>
+        </div>
+        <div class="course-card">
+            <img src="placeholder.jpg" alt="Curso">
+            <a href="http://">
+            <button>Detalles</button>
+            </a>
+        </div>
+    </div>
+</div>

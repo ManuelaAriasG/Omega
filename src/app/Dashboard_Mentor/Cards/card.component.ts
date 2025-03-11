@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProgressCirculeComponent } from '../../common/progress-circule.component';
-
-
 
 @Component({
   selector: 'app-card',
