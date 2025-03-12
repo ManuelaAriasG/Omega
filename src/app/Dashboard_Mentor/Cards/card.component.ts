@@ -12,7 +12,7 @@ export class CardComponent implements OnInit {
   @Input() course: any;
   @Input() mentorId: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     // console.log('Datos recibidos en CardComponent:', this.course);
@@ -20,7 +20,9 @@ export class CardComponent implements OnInit {
 
   goToCourse() {
     if (this.course?.id && this.mentorId) {
-      this.router.navigate([`/dashboard_mentor/${this.mentorId}/course/${this.course.id}`]);
+      this.router.navigate([`/course/${this.course.id}`], {
+        queryParams: { mentorId: this.mentorId }
+      });
     } else {
       console.error('Error: No hay ID de curso o mentor', this.mentorId);
     }

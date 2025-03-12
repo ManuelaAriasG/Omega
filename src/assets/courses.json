@@ -1,6 +1,6 @@
 [
   {
-    "id": 501,
+    "id": 5,
     "nombre": "José Ramírez",
     "correo": "jose.ramirez@eafit.com",
     "cursos": [
@@ -57,13 +57,13 @@
     ]
   },
   {
-    "mentorId": 502,
-    "nombre": "Laura Fernández",
-    "correo": "laura.fernandez@eafit.com",
+    "mentorId": 6,
+    "nombre": "Laura Velez",
+    "correo": "lauravelez@eafit.com",
     "cursos": [
       {
         "id": 2,
-        "nombre": "React para Expertos",
+        "nombre": "Frontend 1",
         "completado": 60,
         "estudiantes": [
           {

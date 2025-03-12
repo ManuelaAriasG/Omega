@@ -34,7 +34,7 @@ export class LoginPageComponent {
             this.router.navigate(['/admin-dashboard']);
             break;
           case 'Mentor':
-            this.router.navigate(['/dashboard_mentor']);
+            this.router.navigate(['/dashboard-mentor/' + user.id]);
             break;
           default:
             this.errorMessage = 'Invalid user type';

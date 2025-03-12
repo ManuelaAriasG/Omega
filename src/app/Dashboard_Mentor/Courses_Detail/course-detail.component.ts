@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { CourseDetailService } from '../../services/course_detail.service';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -13,6 +14,7 @@ import { CourseDetailService } from '../../services/course_detail.service';
   styleUrl: './course-detail.component.scss',
 })
 export class CourseDetailComponent implements OnInit {
+  mentorId: number = 0;
 
   NombreCurso: any;
   Completado: any;
@@ -24,21 +26,31 @@ export class CourseDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private courseDetailService: CourseDetailService
+    private coursesService: CoursesService
   ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe({
+      next: (params) => {
+        this.mentorId = Number(params['mentorId']);
+        // console.log(this.mentorId);
+      }
+    });
     this.route.params.subscribe({
       next: (params) => {
-        const mentorId = Number(params['mentorId']);
         const courseId = Number(params['id']);
+        // console.log(courseId);
 
-        if (!isNaN(mentorId) && !isNaN(courseId)) {
-          this.courseDetailService.obtenerDetallesCurso(mentorId, courseId).subscribe({
+        if (!isNaN(this.mentorId) && !isNaN(courseId)) {
+          this.coursesService.obtenerMentorConCursos(this.mentorId).subscribe({
             next: data => {
-              this.NombreCurso = data.curso.nombre;
-              this.Completado = data.curso.completado
-              this.Estudiante = data.curso.estudiantes;
+              console.log(data);
+              const cursos = data?.cursos.filter((course: any) => course.id === courseId);
+              const curso = cursos?.find((curso: any) => curso.id === courseId);
+              console.log(curso);
+              this.NombreCurso = curso?.nombre;
+              this.Completado = curso?.completado;
+              this.Estudiante = curso?.estudiantes;
             },
             error: error => {
               console.error("Error al obtener los detalles del curso:", error);
