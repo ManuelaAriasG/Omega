@@ -31,7 +31,7 @@ export const routes: Routes = [
         component: LandingPageComponent,
       },
       {
-        path: 'login2',
+        path: 'login',
         data: { renderMode: 'client' },
         component: LoginPageComponent,
       },
@@ -48,51 +48,45 @@ export const routes: Routes = [
     ],
   },
   //admin-dashboard
-  {
-    path: 'admin-dashboard',
-    data: { renderMode: 'client' },
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        data: { renderMode: 'client' },
-        redirectTo: 'courses',
-        pathMatch: 'full',
-      },
-      {
-        path: 'courses',
-        data: { renderMode: 'client' },
-        loadComponent: () =>
-          import(
-            './components/admin-course-components/admin-dashboard/admin-dashboard.component'
-          ).then((m) => m.AdminDashboardComponent),
-      },
-      {
-        path: 'courses/new',
-        data: { renderMode: 'client' },
-        loadComponent: () =>
-          import(
-            './components/admin-course-components/admin-course-form/admin-course-form.component'
-          ).then((m) => m.AdminCourseFormComponent),
-      },
-      {
-        path: 'courses/edit-view/:id',
-        data: { renderMode: 'client' },
-        loadComponent: () =>
-          import(
-            './components/admin-course-components/admin-course-form/admin-course-form.component'
-          ).then((m) => m.AdminCourseFormComponent),
-      },
-      {
-        path: 'courses/edit-content/:id',
-        data: { renderMode: 'client' },
-        loadComponent: () =>
-          import(
-            './components/admin-course-components/admin-course-editor/course-editor.component'
-          ).then((m) => m.CourseEditorComponent),
-      },
-    ],
-  },
+  //{
+  //  path: 'admin-dashboard',
+  //  data: { renderMode: 'client' },
+  //  component: AdminLayoutComponent,
+  //  children: [
+  //    {
+  //      path: 'admin-dashboard/courses',
+  //      data: { renderMode: 'client' },
+  //      loadComponent: () =>
+  //        import(
+  //          './components/admin-course-components/admin-dashboard/admin-dashboard.component'
+  //        ).then((m) => m.AdminDashboardComponent),
+  //    },
+  //    {
+  //      path: 'admin-dashboard/courses/new',
+  //      data: { renderMode: 'client' },
+  //      loadComponent: () =>
+  //        import(
+  //          './components/admin-course-components/admin-course-form/admin-course-form.component'
+  //        ).then((m) => m.AdminCourseFormComponent),
+  //    },
+  //    {
+  //      path: 'admin-dashboard/courses/edit-view/:id',
+  //      data: { renderMode: 'client' },
+  //      loadComponent: () =>
+  //        import(
+  //          './components/admin-course-components/admin-course-form/admin-course-form.component'
+  //        ).then((m) => m.AdminCourseFormComponent),
+  //    },
+  //    {
+  //      path: 'admin-dashboard/courses/edit-content/:id',
+  //      data: { renderMode: 'client' },
+  //      loadComponent: () =>
+  //        import(
+  //          './components/admin-course-components/admin-course-editor/course-editor.component'
+  //        ).then((m) => m.CourseEditorComponent),
+  //    },
+  //  ],
+  //},
   {
     path: '',
     component: HomelayoutComponent,
@@ -201,53 +195,55 @@ export const routes: Routes = [
         data: { renderMode: 'client' },
         component: UserCardComponent,
       },
-
       {
         path: 'admin/adduser',
         data: { renderMode: 'client' },
         component: UserFormComponent,
       },
-
       {
         path: 'admin/user-detail/:id',
         data: { renderMode: 'client' },
         component: UserDetailComponent,
       },
-
       {
         path: 'admin/user-edit/:id',
         data: { renderMode: 'client' },
         component: EditUserComponent,
       },
+      {
+        path: 'admin-dashboard/courses',
+        data: { renderMode: 'client' },
+        loadComponent: () =>
+          import(
+            './components/admin-course-components/admin-dashboard/admin-dashboard.component'
+          ).then((m) => m.AdminDashboardComponent),
+      },
+      {
+        path: 'admin-dashboard/courses/new',
+        data: { renderMode: 'client' },
+        loadComponent: () =>
+          import(
+            './components/admin-course-components/admin-course-form/admin-course-form.component'
+          ).then((m) => m.AdminCourseFormComponent),
+      },
+      {
+        path: 'admin-dashboard/courses/edit-view/:id',
+        data: { renderMode: 'client' },
+        loadComponent: () =>
+          import(
+            './components/admin-course-components/admin-course-form/admin-course-form.component'
+          ).then((m) => m.AdminCourseFormComponent),
+      },
+      {
+        path: 'admin-dashboard/courses/edit-content/:id',
+        data: { renderMode: 'client' },
+        loadComponent: () =>
+          import(
+            './components/admin-course-components/admin-course-editor/course-editor.component'
+          ).then((m) => m.CourseEditorComponent),
+      },
     ],
   },
 
-  // Default path
-  {
-    path: '',
-    data: { renderMode: 'client' },
-    redirectTo: 'landing',
-    pathMatch: 'full',
-  }, // Redirige la raíz a la landing page
-  {
-    path: 'landing',
-    data: { renderMode: 'client' },
-    component: LandingPageComponent,
-  },
-  {
-    path: 'login2',
-    data: { renderMode: 'client' },
-    component: LoginPageComponent,
-  },
-  {
-    path: 'cursos',
-    data: { renderMode: 'client' },
-    component: CoursesPageComponent,
-  },
-  {
-    path: 'signup',
-    data: { renderMode: 'client' },
-    component: SignupPageComponent,
-  },
 
 ];
