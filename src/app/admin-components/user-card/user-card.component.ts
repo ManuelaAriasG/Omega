@@ -6,11 +6,11 @@ import { UserService } from '../../services/admin-user-dashboard-services/user.s
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { SidecontentService } from '../../services/servicesDesign/sidecontent.service';
-import { AddUserButtonComponent } from "../add-user-button/add-user-button.component";
+
 
 @Component({
   selector: 'app-user-card',
-  imports: [CommonModule, RouterLink, AddUserButtonComponent],
+  imports: [CommonModule, RouterLink],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss'
 })
@@ -23,9 +23,9 @@ export class UserCardComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private SidecontentService:SidecontentService,
+    private SidecontentService: SidecontentService,
     private renderer: Renderer2,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(users => {

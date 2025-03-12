@@ -12,9 +12,8 @@ import { HomelayoutComponent } from './layout/homelayout/homelayout.component';
 import { MainLayoutComponent } from './Pages/main-layout/main-layout.component';
 
 import { CourseContentComponent } from './students-dashboard/course-content/course-content.component';
-import path from 'path';
 import { UserCardComponent } from './admin-components/user-card/user-card.component';
-import {AdminComponent} from "./admin-dashboard/admin-dashboard.component";
+import { AdminComponent } from "./admin-dashboard/admin-dashboard.component";
 import { UserFormComponent } from "./admin-components/user-form/user-form.component";
 import { UserDetailComponent } from "./admin-components/user-detail/user-detail.component";
 import { EditUserComponent } from "./admin-components/edit-user/edit-user.component";
@@ -192,6 +191,34 @@ export const routes: Routes = [
             (m) => m.CommunityComponent
           ),
       },
+      {
+        path: 'admin',
+        data: { renderMode: 'client' },
+        component: AdminComponent,
+      },
+      {
+        path: 'admin/user',
+        data: { renderMode: 'client' },
+        component: UserCardComponent,
+      },
+
+      {
+        path: 'admin/adduser',
+        data: { renderMode: 'client' },
+        component: UserFormComponent,
+      },
+
+      {
+        path: 'admin/user-detail/:id',
+        data: { renderMode: 'client' },
+        component: UserDetailComponent,
+      },
+
+      {
+        path: 'admin/user-edit/:id',
+        data: { renderMode: 'client' },
+        component: EditUserComponent,
+      },
     ],
   },
 
@@ -223,39 +250,4 @@ export const routes: Routes = [
     component: SignupPageComponent,
   },
 
-  //Admin User
-  {
-    path: '',
-    component: HomelayoutComponent,
-    children: [
-        {
-          path: 'admin',
-          data: { renderMode: 'client' },
-          component: AdminComponent,
-        },
-        {
-          path: 'admin/user',
-          data: { renderMode: 'client' },
-          component: UserCardComponent,
-        },
-
-        {
-          path: 'admin/adduser',
-          data: { renderMode: 'client' },
-          component: UserFormComponent,
-        },
-
-        {
-          path: 'admin/user-detail/:id',
-          data: { renderMode: 'client' },
-          component: UserDetailComponent,
-        },
-
-        {
-          path: 'admin/user-edit/:id',
-          data: { renderMode: 'client' },
-          component: EditUserComponent,
-        },
-    ],
-  },
 ];
